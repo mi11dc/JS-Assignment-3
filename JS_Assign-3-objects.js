@@ -20,39 +20,28 @@ let cricObj = {
     promptFunction(type) {
         switch(type) {
             case "matches":
-                return { type, value: prompt(inputTitleforMatch, cricObj.matches) };
+                let matches = prompt(inputTitleforMatch, cricObj.matches);
+                cricObj.changeProperty(type, (matches === null) ? cricObj.matches : matches);
+                break;
             case "runs":
-                return { type, value: prompt(inputTitleforRun, cricObj.runs) };
+                let runs = prompt(inputTitleforRun, cricObj.runs);
+                cricObj.changeProperty(type, (runs === null) ? cricObj.runs : runs);
+                break;
             case "hundreds":
-                return { type, value: prompt(inputTitleforHundred, cricObj.hundreds) };
+                let hundreds = prompt(inputTitleforHundred, cricObj.hundreds);
+                cricObj.changeProperty(type, (hundreds === null) ? cricObj.hundreds : hundreds);
+                break;
             default:
-                return { type, value: null };
+                break;
         }
+        console.log(cricObj);
     }
 }
 
 console.log(cricObj);
 
 matchChangeInputObj = cricObj.promptFunction("matches");
-cricObj.changeProperty(
-    matchChangeInputObj.type, 
-    (matchChangeInputObj.value === null) ? cricObj.matches : matchChangeInputObj.value
-);
-
-console.log(cricObj);
 
 runChangeInputObj = cricObj.promptFunction("runs");
-cricObj.changeProperty(
-    runChangeInputObj.type, 
-    (runChangeInputObj.value === null) ? cricObj.matches : runChangeInputObj.value
-);
 
-console.log(cricObj);
-
-hundredChangeInputObj = cricObj.promptFunction("hundreds");;
-cricObj.changeProperty(
-    hundredChangeInputObj.type,
-    (hundredChangeInputObj.value === null) ? cricObj.hundreds : hundredChangeInputObj.value
-);
-
-console.log(cricObj);
+hundredChangeInputObj = cricObj.promptFunction("hundreds");
